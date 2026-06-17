@@ -4,8 +4,8 @@ import {
   Columns2,
   Cpu,
   KeyRound,
+  MousePointerClick,
   Sparkles,
-  SquareTerminal,
   type LucideIcon,
 } from 'lucide-react'
 
@@ -51,17 +51,17 @@ const FEATURES: Array<Feature> = [
   {
     icon: Columns2,
     title: 'Split panes & tabs',
-    body: 'Tile terminals into a tree of panes, group them into tabs, and find across any pane instantly.',
+    body: 'Tile terminals into a tree of panes and tabs — then drag to reorder, split, or pop a pane out into its own tab.',
   },
   {
-    icon: SquareTerminal,
-    title: 'JavaScript REPL',
-    body: 'A built-in JS scratchpad with persistent bindings, console capture, and $0/$1 history of recent results.',
+    icon: MousePointerClick,
+    title: 'Clickable links & paths',
+    body: '⌘-click URLs and real file paths right in your output. Paths are verified against the working directory, so only real files light up.',
   },
   {
     icon: Braces,
-    title: 'Inline JSON inspector',
-    body: 'Kommando spots JSON in your output and lets you expand and explore it in a structured viewer.',
+    title: 'JavaScript inspector',
+    body: 'A built-in JS REPL with persistent bindings and console capture, plus inline inspection of any JSON in your output.',
   },
 ]
 
@@ -92,9 +92,9 @@ const SHOWCASES: Array<Showcase> = [
     title: 'Split your workspace any way you like.',
     body: 'Tile terminals into a tree of panes and group them into tabs. Keep your server, logs, and a scratch shell side by side in a single window.',
     points: [
-      'Recursive split panes, horizontal or vertical',
-      'Tabs for separate sessions',
-      'Find across any pane in an instant',
+      'Drag tabs to reorder, or into the canvas to split',
+      'Drag panes to rearrange or pop them into a new tab',
+      'Rename tabs and find across any pane instantly',
     ],
     image: '/img/screenshot-3.webp',
     alt: 'Kommando showing three terminals tiled into split panes',
@@ -131,8 +131,12 @@ const FAQ: Array<{ q: string; a: string }> = [
     a: 'Only if you let it. By default suggested commands are inserted into your prompt for you to review and run. Turn on “auto-run generated commands” when you want it to execute them for you.',
   },
   {
-    q: 'Which macOS version do I need?',
-    a: 'Kommando targets recent macOS releases and runs natively on both Apple silicon and Intel Macs.',
+    q: 'Does Kommando update itself?',
+    a: 'Yes. Kommando has built-in auto-updates (via Sparkle) — it checks for new versions on launch and can install them automatically, or you can trigger a check from the menu. Builds are Developer ID-signed and notarized.',
+  },
+  {
+    q: 'Which Mac do I need?',
+    a: 'Kommando requires macOS 26 (Tahoe) or later and runs natively on Apple silicon.',
   },
 ]
 
@@ -223,7 +227,7 @@ function Hero() {
           </Button>
         </div>
         <p className="mt-4 font-mono text-xs text-muted-foreground">
-          Apple silicon &amp; Intel · No account required
+          macOS 26+ · Apple silicon · No account required
         </p>
       </div>
 
@@ -373,7 +377,7 @@ function DownloadCta() {
             </Button>
           </div>
           <p className="mt-4 font-mono text-xs text-muted-foreground">
-            Free · Apple silicon &amp; Intel
+            Free · macOS 26+ · Apple silicon
           </p>
         </div>
       </div>
