@@ -13,7 +13,18 @@ const config = defineConfig({
     devtools(),
     cloudflare({ viteEnvironment: { name: 'ssr' } }),
     tailwindcss(),
-    tanstackStart(),
+    tanstackStart({
+      // The site is fully static, so prerender every route to HTML at build
+      // time. crawlLinks discovers `/legal` (linked from the footer) on its own.
+      prerender: {
+        enabled: true,
+        crawlLinks: true,
+      },
+      sitemap: {
+        enabled: true,
+        host: 'https://kommando.app',
+      },
+    }),
     viteReact(),
   ],
 })
