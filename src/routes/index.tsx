@@ -1,6 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router'
 import {
-  Apple,
   Braces,
   Columns2,
   Cpu,
@@ -9,6 +8,8 @@ import {
   SquareTerminal,
   type LucideIcon,
 } from 'lucide-react'
+
+import { AppleLogo } from '@/components/apple-logo'
 
 import {
   Accordion,
@@ -160,15 +161,17 @@ function BackgroundGlow() {
       aria-hidden
       className="pointer-events-none fixed inset-0 -z-10 overflow-hidden"
     >
-      <div className="absolute left-1/2 top-[-12rem] size-[42rem] -translate-x-1/2 rounded-full bg-accent/10 blur-[120px]" />
-      <div className="absolute bottom-[-16rem] right-[-8rem] size-[34rem] rounded-full bg-accent/5 blur-[120px]" />
+      <div className="absolute left-1/2 top-[-12rem] size-[42rem] -translate-x-1/2 rounded-full bg-brand/10 blur-[120px]" />
+      <div className="absolute bottom-[-16rem] right-[-8rem] size-[34rem] rounded-full bg-brand/5 blur-[120px]" />
       <div
-        className="absolute inset-0 opacity-[0.18]"
+        className="absolute inset-0 opacity-70"
         style={{
           backgroundImage:
-            'linear-gradient(to right, rgba(255,255,255,0.04) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.04) 1px, transparent 1px)',
+            'linear-gradient(to right, var(--grid-line) 1px, transparent 1px), linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px)',
           backgroundSize: '56px 56px',
           maskImage:
+            'radial-gradient(ellipse 80% 50% at 50% 0%, #000 60%, transparent 100%)',
+          WebkitMaskImage:
             'radial-gradient(ellipse 80% 50% at 50% 0%, #000 60%, transparent 100%)',
         }}
       />
@@ -182,9 +185,9 @@ function Hero() {
       <div className="mx-auto flex max-w-2xl flex-col items-center text-center">
         <Badge
           variant="outline"
-          className="gap-1.5 rounded-full border-white/10 bg-white/5 px-3 py-1 text-muted-foreground"
+          className="gap-1.5 rounded-full border-border bg-surface px-3 py-1 text-muted-foreground"
         >
-          <Sparkles className="size-3 text-accent" />
+          <Sparkles className="size-3 text-brand" />
           A terminal with AI built in
         </Badge>
 
@@ -206,7 +209,7 @@ function Hero() {
             className="rounded-full px-7 text-base font-medium"
           >
             <a href="#download">
-              <Apple className="size-5" />
+              <AppleLogo className="size-5" />
               Download for macOS
             </a>
           </Button>
@@ -247,7 +250,7 @@ function Features() {
         subtitle="Kommando keeps the speed of a native terminal and adds the tools you usually juggle across three other apps."
       />
 
-      <div className="mt-14 grid gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/5 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="mt-14 grid gap-px overflow-hidden rounded-2xl border border-border bg-border sm:grid-cols-2 lg:grid-cols-3">
         {FEATURES.map((feature) => (
           <FeatureCard key={feature.title} {...feature} />
         ))}
@@ -259,7 +262,7 @@ function Features() {
 function FeatureCard({ icon: Icon, title, body }: Feature) {
   return (
     <div className="group bg-background p-7 transition-colors hover:bg-card">
-      <div className="flex size-10 items-center justify-center rounded-lg border border-white/10 bg-white/5 text-accent transition-colors group-hover:border-accent/30">
+      <div className="flex size-10 items-center justify-center rounded-lg border border-border bg-surface text-brand transition-colors group-hover:border-brand/40">
         <Icon className="size-5" />
       </div>
       <h3 className="mt-5 text-base font-semibold">{title}</h3>
@@ -292,7 +295,7 @@ function ShowcaseRow({
   return (
     <div className="grid items-center gap-10 md:grid-cols-2 md:gap-12">
       <div className={flip ? 'md:order-2' : undefined}>
-        <span className="font-mono text-xs uppercase tracking-[0.2em] text-accent">
+        <span className="font-mono text-xs uppercase tracking-[0.2em] text-brand">
           {showcase.eyebrow}
         </span>
         <h2 className="mt-4 text-balance text-3xl font-semibold tracking-tight sm:text-4xl">
@@ -303,7 +306,7 @@ function ShowcaseRow({
         <ul className="mt-8 space-y-4">
           {showcase.points.map((point) => (
             <li key={point} className="flex gap-3">
-              <span className="mt-1.5 size-1.5 shrink-0 rounded-full bg-accent" />
+              <span className="mt-1.5 size-1.5 shrink-0 rounded-full bg-brand" />
               <span className="text-muted-foreground">{point}</span>
             </li>
           ))}
@@ -347,8 +350,8 @@ function Faq() {
 function DownloadCta() {
   return (
     <section id="download" className="scroll-mt-20 px-6 pb-28 pt-8">
-      <div className="relative mx-auto max-w-4xl overflow-hidden rounded-3xl border border-white/10 bg-card px-8 py-16 text-center">
-        <div className="absolute left-1/2 top-0 -z-0 size-72 -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent/20 blur-[100px]" />
+      <div className="relative mx-auto max-w-4xl overflow-hidden rounded-3xl border border-border bg-card px-8 py-16 text-center">
+        <div className="absolute left-1/2 top-0 z-0 size-72 -translate-x-1/2 -translate-y-1/2 rounded-full bg-brand/20 blur-[100px]" />
         <div className="relative">
           <AppIcon className="mx-auto size-20" />
           <h2 className="mt-6 text-balance text-3xl font-semibold tracking-tight sm:text-4xl">
@@ -364,7 +367,7 @@ function DownloadCta() {
               className="rounded-full px-8 text-base font-medium"
             >
               <a href="#">
-                <Apple className="size-5" />
+                <AppleLogo className="size-5" />
                 Download for macOS
               </a>
             </Button>
@@ -389,7 +392,7 @@ function SectionHeading({
 }) {
   return (
     <div className="mx-auto max-w-2xl text-center">
-      <span className="font-mono text-xs uppercase tracking-[0.2em] text-accent">
+      <span className="font-mono text-xs uppercase tracking-[0.2em] text-brand">
         {eyebrow}
       </span>
       <h2 className="mt-4 text-balance text-3xl font-semibold tracking-tight sm:text-4xl">

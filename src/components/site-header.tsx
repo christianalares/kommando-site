@@ -1,7 +1,10 @@
-import { Apple } from 'lucide-react'
+import { Github } from 'lucide-react'
 
+import { AppleLogo } from '@/components/apple-logo'
 import { Button } from '@/components/ui/button'
 import { AppIcon, Wordmark } from '@/components/wordmark'
+
+const GITHUB_URL = 'https://github.com/christianalares/kommando'
 
 const NAV = [
   { label: 'Features', href: '/#features' },
@@ -10,7 +13,7 @@ const NAV = [
 
 export function SiteHeader() {
   return (
-    <header className="sticky top-0 z-50 border-b border-white/5 bg-background/70 backdrop-blur-xl">
+    <header className="sticky top-0 z-50 border-b border-border bg-background/70 backdrop-blur-xl">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
         <a href="/" className="flex items-center gap-2.5">
           <AppIcon className="size-8" />
@@ -29,12 +32,30 @@ export function SiteHeader() {
           ))}
         </nav>
 
-        <Button asChild size="sm" className="rounded-full font-medium">
-          <a href="/#download">
-            <Apple className="size-4" />
-            Download
-          </a>
-        </Button>
+        <div className="flex items-center gap-1.5">
+          <Button
+            asChild
+            size="icon"
+            variant="ghost"
+            className="rounded-full text-muted-foreground hover:text-foreground"
+          >
+            <a
+              href={GITHUB_URL}
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Kommando on GitHub"
+            >
+              <Github className="size-4" />
+            </a>
+          </Button>
+
+          <Button asChild size="sm" className="rounded-full font-medium">
+            <a href="/#download">
+              <AppleLogo className="size-4" />
+              Download
+            </a>
+          </Button>
+        </div>
       </div>
     </header>
   )

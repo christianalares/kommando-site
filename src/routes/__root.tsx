@@ -14,7 +14,16 @@ export const Route = createRootRoute({
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { title: SITE_TITLE },
       { name: 'description', content: SITE_DESCRIPTION },
-      { name: 'theme-color', content: '#0a0a0c' },
+      {
+        name: 'theme-color',
+        media: '(prefers-color-scheme: light)',
+        content: '#fcfcfd',
+      },
+      {
+        name: 'theme-color',
+        media: '(prefers-color-scheme: dark)',
+        content: '#0a0a0c',
+      },
       { property: 'og:type', content: 'website' },
       { property: 'og:title', content: SITE_TITLE },
       { property: 'og:description', content: SITE_DESCRIPTION },
@@ -46,7 +55,7 @@ export const Route = createRootRoute({
 
 function RootDocument({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en">
       <head>
         <HeadContent />
       </head>

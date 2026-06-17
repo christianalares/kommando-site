@@ -16,7 +16,7 @@ export function Wordmark({
     >
       Kommando
       {withCursor && (
-        <span className="cursor-blink ml-0.5 text-accent">_</span>
+        <span className="cursor-blink ml-0.5 text-brand">_</span>
       )}
     </span>
   )

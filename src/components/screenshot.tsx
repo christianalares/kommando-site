@@ -17,8 +17,8 @@ export function Screenshot({
 }) {
   return (
     <div className={cn('group relative', className)}>
-      <div className="pointer-events-none absolute -inset-6 -z-10 rounded-[2rem] bg-accent/10 opacity-60 blur-3xl" />
-      <div className="overflow-hidden rounded-xl border border-white/10 bg-[#0c0c10] shadow-2xl shadow-black/60 ring-1 ring-inset ring-white/5">
+      <div className="pointer-events-none absolute -inset-6 -z-10 rounded-[2rem] bg-brand/10 opacity-60 blur-3xl" />
+      <div className="overflow-hidden rounded-xl border border-border bg-[#0c0c10] shadow-2xl shadow-black/40 ring-1 ring-inset ring-white/10">
         <img
           src={src}
           alt={alt}

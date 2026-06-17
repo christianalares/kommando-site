@@ -29,7 +29,7 @@ function Legal() {
       <SiteHeader />
 
       <main className="mx-auto max-w-3xl px-6 py-20">
-        <p className="font-mono text-xs uppercase tracking-[0.2em] text-accent">
+        <p className="font-mono text-xs uppercase tracking-[0.2em] text-brand">
           Legal
         </p>
         <h1 className="mt-4 text-4xl font-semibold tracking-tight">
