@@ -6,6 +6,9 @@ const SITE_TITLE = 'Kommando — A native macOS terminal with AI built in'
 const SITE_DESCRIPTION =
   'Kommando is a fast, native macOS terminal with a built-in AI assistant, split panes, a JavaScript REPL, and an inline JSON inspector. Bring your own Anthropic or OpenAI key.'
 const SITE_URL = 'https://kommando.app'
+const OG_IMAGE = `${SITE_URL}/og.png`
+const OG_IMAGE_ALT =
+  'Kommando — the terminal that thinks with you. A native macOS terminal with AI assistant, split panes, JavaScript REPL, and a built-in MCP server.'
 
 export const Route = createRootRoute({
   head: () => ({
@@ -25,14 +28,20 @@ export const Route = createRootRoute({
         content: '#0a0a0c',
       },
       { property: 'og:type', content: 'website' },
+      { property: 'og:site_name', content: 'Kommando' },
       { property: 'og:title', content: SITE_TITLE },
       { property: 'og:description', content: SITE_DESCRIPTION },
       { property: 'og:url', content: SITE_URL },
-      { property: 'og:image', content: '/kommando-icon.png' },
+      { property: 'og:image', content: OG_IMAGE },
+      { property: 'og:image:width', content: '1200' },
+      { property: 'og:image:height', content: '630' },
+      { property: 'og:image:type', content: 'image/png' },
+      { property: 'og:image:alt', content: OG_IMAGE_ALT },
       { name: 'twitter:card', content: 'summary_large_image' },
       { name: 'twitter:title', content: SITE_TITLE },
       { name: 'twitter:description', content: SITE_DESCRIPTION },
-      { name: 'twitter:image', content: '/kommando-icon.png' },
+      { name: 'twitter:image', content: OG_IMAGE },
+      { name: 'twitter:image:alt', content: OG_IMAGE_ALT },
     ],
     links: [
       { rel: 'stylesheet', href: appCss },
