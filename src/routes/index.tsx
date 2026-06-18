@@ -5,11 +5,14 @@ import {
   Cpu,
   KeyRound,
   MousePointerClick,
-  Sparkles,
-  type LucideIcon,
+  Sparkles
+  
 } from 'lucide-react'
+import type {LucideIcon} from 'lucide-react';
 
+import { cn } from '@/lib/utils'
 import { AppleLogo } from '@/components/apple-logo'
+import { CommandDrift } from '@/components/command-drift'
 
 import {
   Accordion,
@@ -19,7 +22,8 @@ import {
 } from '@/components/ui/accordion'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
-import { Screenshot } from '@/components/screenshot'
+import { HeroVideo } from '@/components/hero-video'
+import { ShowcaseImage } from '@/components/showcase-image'
 import { SiteFooter } from '@/components/site-footer'
 import { SiteHeader } from '@/components/site-header'
 import { AppIcon, Wordmark } from '@/components/wordmark'
@@ -84,7 +88,7 @@ const SHOWCASES: Array<Showcase> = [
       'Inserts commands you review, or auto-runs on your terms',
       'Bring your own Anthropic or OpenAI key',
     ],
-    image: '/img/screenshot-2.webp',
+    image: '/img/feature-ai.webp',
     alt: 'Kommando AI sidebar inserting and running shell commands',
   },
   {
@@ -96,8 +100,8 @@ const SHOWCASES: Array<Showcase> = [
       'Drag panes to rearrange or pop them into a new tab',
       'Rename tabs and find across any pane instantly',
     ],
-    image: '/img/screenshot-3.webp',
-    alt: 'Kommando showing three terminals tiled into split panes',
+    image: '/img/feature-panes.webp',
+    alt: 'Kommando showing four terminals tiled into split panes',
   },
   {
     eyebrow: 'Make it yours',
@@ -108,8 +112,20 @@ const SHOWCASES: Array<Showcase> = [
       'Run immediately or drop into the prompt',
       'Appearance, terminal, and shortcut settings',
     ],
-    image: '/img/screenshot-4.webp',
+    image: '/img/feature-commands.webp',
     alt: 'Kommando settings showing custom commands with keyboard shortcuts',
+  },
+  {
+    eyebrow: 'Built-in MCP server',
+    title: 'Let other AI apps drive your terminal.',
+    body: 'Kommando exposes its panes over MCP, so any MCP-aware assistant can run commands, open new panes, and read the output — right inside your real terminal session.',
+    points: [
+      'Run commands and open panes from any MCP client',
+      'The agent sees real output and acts on it',
+      'You stay in control of what connects',
+    ],
+    image: '/img/feature-mcp.webp',
+    alt: 'Another AI app running commands in Kommando over its MCP server',
   },
 ]
 
@@ -144,6 +160,7 @@ function Home() {
   return (
     <div id="top" className="relative">
       <BackgroundGlow />
+      <CommandDrift />
       <SiteHeader />
 
       <main>
@@ -165,20 +182,10 @@ function BackgroundGlow() {
       aria-hidden
       className="pointer-events-none fixed inset-0 -z-10 overflow-hidden"
     >
-      <div className="absolute left-1/2 top-[-12rem] size-[42rem] -translate-x-1/2 rounded-full bg-brand/10 blur-[120px]" />
-      <div className="absolute bottom-[-16rem] right-[-8rem] size-[34rem] rounded-full bg-brand/5 blur-[120px]" />
-      <div
-        className="absolute inset-0 opacity-70"
-        style={{
-          backgroundImage:
-            'linear-gradient(to right, var(--grid-line) 1px, transparent 1px), linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px)',
-          backgroundSize: '56px 56px',
-          maskImage:
-            'radial-gradient(ellipse 80% 50% at 50% 0%, #000 60%, transparent 100%)',
-          WebkitMaskImage:
-            'radial-gradient(ellipse 80% 50% at 50% 0%, #000 60%, transparent 100%)',
-        }}
-      />
+      {/* Irregular, off-center light — deliberately not the symmetric centered halo. */}
+      <div className="absolute -left-32 -top-40 size-152 rounded-full bg-brand/12 blur-[140px]" />
+      <div className="absolute right-[6%] top-[22%] size-104 rounded-full bg-brand/6 blur-[130px]" />
+      <div className="absolute -bottom-72 left-[18%] size-128 rounded-full bg-brand/5 blur-[150px]" />
     </div>
   )
 }
@@ -232,10 +239,9 @@ function Hero() {
       </div>
 
       <div className="relative mx-auto mt-16 max-w-5xl">
-        <Screenshot
-          src="/img/screenshot-1.webp"
-          alt="Kommando terminal with the AI assistant explaining a project's file structure"
-          priority
+        <HeroVideo
+          src="/kommando-demo.mp4"
+          poster="/img/hero-poster.webp"
         />
       </div>
     </section>
@@ -246,18 +252,20 @@ function Features() {
   return (
     <section
       id="features"
-      className="mx-auto max-w-6xl scroll-mt-20 px-6 py-24"
+      className="relative scroll-mt-20 border-y border-border bg-card/40 py-24"
     >
-      <SectionHeading
-        eyebrow="Features"
-        title="Everything you reach for, in one window"
-        subtitle="Kommando keeps the speed of a native terminal and adds the tools you usually juggle across three other apps."
-      />
+      <div className="mx-auto max-w-6xl px-6">
+        <SectionHeading
+          eyebrow="Features"
+          title="Everything you reach for, in one window"
+          subtitle="Kommando keeps the speed of a native terminal and adds the tools you usually juggle across three other apps."
+        />
 
-      <div className="mt-14 grid gap-px overflow-hidden rounded-2xl border border-border bg-border sm:grid-cols-2 lg:grid-cols-3">
-        {FEATURES.map((feature) => (
-          <FeatureCard key={feature.title} {...feature} />
-        ))}
+        <div className="mt-14 grid gap-px overflow-hidden rounded-2xl border border-border bg-border sm:grid-cols-2 lg:grid-cols-3">
+          {FEATURES.map((feature) => (
+            <FeatureCard key={feature.title} {...feature} />
+          ))}
+        </div>
       </div>
     </section>
   )
@@ -282,7 +290,12 @@ function Showcases() {
     <section id="about" className="mx-auto max-w-6xl px-6 py-12">
       <div className="flex flex-col gap-24 py-12">
         {SHOWCASES.map((showcase, i) => (
-          <ShowcaseRow key={showcase.title} showcase={showcase} flip={i % 2 === 1} />
+          <ShowcaseRow
+            key={showcase.title}
+            showcase={showcase}
+            index={i}
+            flip={i % 2 === 1}
+          />
         ))}
       </div>
     </section>
@@ -291,17 +304,23 @@ function Showcases() {
 
 function ShowcaseRow({
   showcase,
+  index,
   flip,
 }: {
   showcase: Showcase
+  index: number
   flip: boolean
 }) {
   return (
-    <div className="grid items-center gap-10 md:grid-cols-2 md:gap-12">
-      <div className={flip ? 'md:order-2' : undefined}>
-        <span className="font-mono text-xs uppercase tracking-[0.2em] text-brand">
+    <div className="grid items-center gap-10 md:grid-cols-5 md:gap-14">
+      <div className={cn('md:col-span-2', flip && 'md:order-2')}>
+        <div className="flex items-center gap-3 font-mono text-xs uppercase tracking-[0.2em] text-brand">
+          <span className="text-sm text-muted-foreground/50">
+            {String(index + 1).padStart(2, '0')}
+          </span>
+          <span className="h-px w-6 bg-border" />
           {showcase.eyebrow}
-        </span>
+        </div>
         <h2 className="mt-4 text-balance text-3xl font-semibold tracking-tight sm:text-4xl">
           {showcase.title}
         </h2>
@@ -317,10 +336,10 @@ function ShowcaseRow({
         </ul>
       </div>
 
-      <Screenshot
+      <ShowcaseImage
         src={showcase.image}
         alt={showcase.alt}
-        className={flip ? 'md:order-1' : undefined}
+        className={cn('md:col-span-3', flip && 'md:order-1')}
       />
     </div>
   )

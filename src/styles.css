@@ -170,3 +170,68 @@
 .cursor-blink {
   animation: kommando-blink 1.1s steps(1) infinite;
 }
+
+/*
+  Ambient "command drift": columns of faint terminal sessions scrolling slowly
+  in the deep background. Each column stacks two identical blocks and translates
+  up/down by exactly one block height for a seamless loop.
+*/
+@keyframes kommando-drift-up {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-50%);
+  }
+}
+
+@keyframes kommando-drift-down {
+  from {
+    transform: translateY(-50%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+.drift-track {
+  animation: kommando-drift-up linear infinite;
+  will-change: transform;
+}
+
+.drift-track[data-dir='down'] {
+  animation-name: kommando-drift-down;
+}
+
+/* Each line reveals left-to-right in chunks, like an LLM streaming tokens. */
+@keyframes kommando-stream {
+  0% {
+    clip-path: inset(0 100% 0 0);
+    animation-timing-function: steps(18, end);
+  }
+  34% {
+    clip-path: inset(0 0 0 0);
+  }
+  90% {
+    clip-path: inset(0 0 0 0);
+  }
+  100% {
+    clip-path: inset(0 100% 0 0);
+  }
+}
+
+.drift-line {
+  animation: kommando-stream 5s infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .drift-track {
+    animation: none;
+    transform: translateY(-25%);
+  }
+
+  .drift-line {
+    animation: none;
+    clip-path: none;
+  }
+}
