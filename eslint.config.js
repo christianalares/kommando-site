@@ -15,6 +15,8 @@ export default [
     },
   },
   {
-    ignores: ['eslint.config.js', 'prettier.config.js'],
+    // `video/` is a self-contained Remotion sub-project with its own toolchain
+    // (eslint config + tsconfig); it must not be linted by the site config.
+    ignores: ['eslint.config.js', 'prettier.config.js', 'video/**'],
   },
 ]
