@@ -75,6 +75,7 @@ type Showcase = {
   body: string
   points: Array<string>
   image: string
+  imageLight: string
   alt: string
 }
 
@@ -89,6 +90,7 @@ const SHOWCASES: Array<Showcase> = [
       'Bring your own Anthropic or OpenAI key',
     ],
     image: '/img/feature-ai.webp',
+    imageLight: '/img/feature-ai-light.webp',
     alt: 'Kommando AI sidebar inserting and running shell commands',
   },
   {
@@ -101,6 +103,7 @@ const SHOWCASES: Array<Showcase> = [
       'Rename tabs and find across any pane instantly',
     ],
     image: '/img/feature-panes.webp',
+    imageLight: '/img/feature-panes-light.webp',
     alt: 'Kommando showing four terminals tiled into split panes',
   },
   {
@@ -113,6 +116,7 @@ const SHOWCASES: Array<Showcase> = [
       'Appearance, terminal, and shortcut settings',
     ],
     image: '/img/feature-commands.webp',
+    imageLight: '/img/feature-commands-light.webp',
     alt: 'Kommando settings showing custom commands with keyboard shortcuts',
   },
   {
@@ -125,6 +129,7 @@ const SHOWCASES: Array<Showcase> = [
       'You stay in control of what connects',
     ],
     image: '/img/feature-mcp.webp',
+    imageLight: '/img/feature-mcp-light.webp',
     alt: 'Another AI app running commands in Kommando over its MCP server',
   },
 ]
@@ -241,7 +246,9 @@ function Hero() {
       <div className="relative mx-auto mt-16 max-w-5xl">
         <HeroVideo
           src="/kommando-demo.mp4"
+          srcLight="/kommando-demo-light.mp4"
           poster="/img/hero-poster.webp"
+          posterLight="/img/hero-poster-light.webp"
         />
       </div>
     </section>
@@ -338,6 +345,7 @@ function ShowcaseRow({
 
       <ShowcaseImage
         src={showcase.image}
+        srcLight={showcase.imageLight}
         alt={showcase.alt}
         className={cn('md:col-span-3', flip && 'md:order-1')}
       />

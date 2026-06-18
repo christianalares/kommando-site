@@ -9,16 +9,29 @@ import { cn } from '@/lib/utils'
  */
 export function ShowcaseImage({
   src,
+  srcLight,
   alt,
   className,
 }: {
   src: string
+  srcLight?: string
   alt: string
   className?: string
 }) {
   const ref = useRef<HTMLDivElement>(null)
   const [shown, setShown] = useState(false)
   const [open, setOpen] = useState(false)
+  const [light, setLight] = useState(false)
+
+  useEffect(() => {
+    const mq = window.matchMedia('(prefers-color-scheme: light)')
+    const update = () => setLight(mq.matches)
+    update()
+    mq.addEventListener('change', update)
+    return () => mq.removeEventListener('change', update)
+  }, [])
+
+  const enlargedSrc = light && srcLight ? srcLight : src
 
   useEffect(() => {
     const el = ref.current
@@ -76,17 +89,22 @@ export function ShowcaseImage({
           type="button"
           onClick={() => setOpen(true)}
           aria-label={`Enlarge: ${alt}`}
-          className="block w-full origin-center cursor-pointer overflow-hidden rounded-xl border border-border bg-[#0c0c10] shadow-2xl shadow-black/40 ring-1 ring-inset ring-white/10 transition-transform duration-300 ease-out hover:-translate-y-1 hover:scale-[1.02] hover:shadow-brand/10"
+          className="block w-full origin-center cursor-pointer overflow-hidden rounded-xl border border-border bg-[#eceef2] shadow-2xl shadow-black/40 ring-1 ring-inset ring-black/5 transition-transform duration-300 ease-out hover:-translate-y-1 hover:scale-[1.02] hover:shadow-brand/10 dark:bg-[#0c0c10] dark:ring-white/10"
         >
-          <img
-            src={src}
-            alt={alt}
-            width={1780}
-            height={1100}
-            loading="lazy"
-            decoding="async"
-            className="block w-full"
-          />
+          <picture>
+            {srcLight ? (
+              <source srcSet={srcLight} media="(prefers-color-scheme: light)" />
+            ) : null}
+            <img
+              src={src}
+              alt={alt}
+              width={1780}
+              height={1100}
+              loading="lazy"
+              decoding="async"
+              className="block w-full"
+            />
+          </picture>
           <span className="pointer-events-none absolute right-3 top-3 flex size-9 items-center justify-center rounded-full border border-white/15 bg-black/50 text-white/90 opacity-0 backdrop-blur-md transition-opacity duration-300 group-hover/shot:opacity-100">
             <ZoomIn className="size-4" />
           </span>
@@ -109,9 +127,10 @@ export function ShowcaseImage({
             <X className="size-5" />
           </button>
           <img
-            src={src}
+            src={enlargedSrc}
             alt={alt}
             onClick={(e) => e.stopPropagation()}
+            style={{ backgroundColor: light ? '#ffffff' : '#0c0c10' }}
             className="max-h-[90vh] max-w-[94vw] rounded-xl border border-white/10 shadow-2xl"
           />
         </div>
