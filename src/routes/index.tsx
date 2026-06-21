@@ -30,6 +30,11 @@ import { AppIcon, Wordmark } from '@/components/wordmark'
 
 export const Route = createFileRoute('/')({ component: Home })
 
+/// Stable download link. The release pipeline uploads a fixed-name Kommando.zip to the
+/// GitHub "downloads" release on every release, so this URL never changes across versions.
+const DOWNLOAD_URL =
+  'https://github.com/christianalares/kommando/releases/download/downloads/Kommando.zip'
+
 type Feature = {
   icon: LucideIcon
   title: string
@@ -224,7 +229,7 @@ function Hero() {
             size="lg"
             className="rounded-full px-7 text-base font-medium"
           >
-            <a href="#download">
+            <a href={DOWNLOAD_URL}>
               <AppleLogo className="size-5" />
               Download for macOS
             </a>
@@ -397,7 +402,7 @@ function DownloadCta() {
               size="lg"
               className="rounded-full px-8 text-base font-medium"
             >
-              <a href="#">
+              <a href={DOWNLOAD_URL}>
                 <AppleLogo className="size-5" />
                 Download for macOS
               </a>
