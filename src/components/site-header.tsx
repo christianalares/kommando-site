@@ -3,6 +3,7 @@ import { Github } from 'lucide-react'
 import { AppleLogo } from '@/components/apple-logo'
 import { Button } from '@/components/ui/button'
 import { AppIcon, Wordmark } from '@/components/wordmark'
+import { DOWNLOAD_URL } from '@/lib/links'
 
 const GITHUB_URL = 'https://github.com/christianalares/kommando'
 
@@ -50,7 +51,7 @@ export function SiteHeader() {
           </Button>
 
           <Button asChild size="sm" className="rounded-full font-medium">
-            <a href="/#download">
+            <a href={DOWNLOAD_URL}>
               <AppleLogo className="size-4" />
               Download
             </a>

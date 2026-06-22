@@ -11,6 +11,7 @@ import {
 import type {LucideIcon} from 'lucide-react';
 
 import { cn } from '@/lib/utils'
+import { DOWNLOAD_URL } from '@/lib/links'
 import { AppleLogo } from '@/components/apple-logo'
 import { CommandDrift } from '@/components/command-drift'
 
@@ -29,11 +30,6 @@ import { SiteHeader } from '@/components/site-header'
 import { AppIcon, Wordmark } from '@/components/wordmark'
 
 export const Route = createFileRoute('/')({ component: Home })
-
-/// Stable download link. The release pipeline uploads a fixed-name Kommando.zip to the
-/// GitHub "downloads" release on every release, so this URL never changes across versions.
-const DOWNLOAD_URL =
-  'https://github.com/christianalares/kommando/releases/download/downloads/Kommando.zip'
 
 type Feature = {
   icon: LucideIcon
