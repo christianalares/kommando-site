@@ -1,12 +1,14 @@
 import { createFileRoute } from '@tanstack/react-router'
 import {
-  Braces,
+  Blocks,
   Columns2,
   Cpu,
   KeyRound,
+  LayoutGrid,
   MousePointerClick,
-  Sparkles
-  
+  Palette,
+  Plug,
+  Sparkles,
 } from 'lucide-react'
 import type {LucideIcon} from 'lucide-react';
 
@@ -40,8 +42,8 @@ type Feature = {
 const FEATURES: Array<Feature> = [
   {
     icon: Cpu,
-    title: 'Native & instant',
-    body: 'Built in SwiftUI for Apple silicon. Real macOS windows, vibrant chrome, and zero Electron bloat.',
+    title: 'Native, not Electron',
+    body: 'Built in SwiftUI for Apple silicon. Real macOS windows, system menus, vibrant chrome, and none of the Electron bloat.',
   },
   {
     icon: Sparkles,
@@ -50,8 +52,8 @@ const FEATURES: Array<Feature> = [
   },
   {
     icon: KeyRound,
-    title: 'Bring your own key',
-    body: 'Plug in your own Anthropic or OpenAI key. It is stored in the macOS Keychain and only ever talks to your provider.',
+    title: 'BYOK',
+    body: 'Bring your own Anthropic or OpenAI key. It is stored in the macOS Keychain and only ever talks to your provider.',
   },
   {
     icon: Columns2,
@@ -59,14 +61,29 @@ const FEATURES: Array<Feature> = [
     body: 'Tile terminals into a tree of panes and tabs — then drag to reorder, split, or pop a pane out into its own tab.',
   },
   {
+    icon: LayoutGrid,
+    title: 'Spaces per project',
+    body: 'Group tabs and panes into Spaces — one per project — and switch between them in a keystroke, each with its own colour and folder.',
+  },
+  {
+    icon: Blocks,
+    title: 'Command blocks',
+    body: 'Click any past command to select it with its output, then ⌘C to copy. The shell integration installs itself — no setup.',
+  },
+  {
     icon: MousePointerClick,
     title: 'Clickable links & paths',
     body: '⌘-click URLs and real file paths right in your output. Paths are verified against the working directory, so only real files light up.',
   },
   {
-    icon: Braces,
-    title: 'JavaScript inspector',
-    body: 'A built-in JS REPL with persistent bindings and console capture, plus inline inspection of any JSON in your output.',
+    icon: Plug,
+    title: 'Built-in MCP server',
+    body: 'Expose your panes over MCP so any MCP-aware assistant can run commands, open panes, and read output — right in your real terminal.',
+  },
+  {
+    icon: Palette,
+    title: 'Theme Studio',
+    body: 'Craft custom terminal themes — all 16 ANSI colors plus background, foreground and cursor — with a live preview and light/dark variants.',
   },
 ]
 
@@ -95,6 +112,19 @@ const SHOWCASES: Array<Showcase> = [
     alt: 'Kommando AI sidebar inserting and running shell commands',
   },
   {
+    eyebrow: 'Command blocks',
+    title: 'Every command is a block you can grab.',
+    body: 'Kommando marks where each command starts and ends, so you can click any past command to select it together with its output — then ⌘C to copy the whole thing. Zero setup; the shell integration installs itself.',
+    points: [
+      'Click a past command to highlight it and its output',
+      '⌘C copies the command and output together',
+      'A green or red edge marks success or failure',
+    ],
+    image: '/img/feature-commandblocks.webp',
+    imageLight: '/img/feature-commandblocks-light.webp',
+    alt: 'Kommando highlighting a past command block with a Copied confirmation',
+  },
+  {
     eyebrow: 'Panes & tabs',
     title: 'Split your workspace any way you like.',
     body: 'Tile terminals into a tree of panes and group them into tabs. Keep your server, logs, and a scratch shell side by side in a single window.',
@@ -106,6 +136,19 @@ const SHOWCASES: Array<Showcase> = [
     image: '/img/feature-panes.webp',
     imageLight: '/img/feature-panes-light.webp',
     alt: 'Kommando showing four terminals tiled into split panes',
+  },
+  {
+    eyebrow: 'Spaces',
+    title: 'A separate workspace for every project.',
+    body: 'Group your tabs and panes into Spaces — one per project. Switch between them in a keystroke, each with its own colour and default folder, while background shells keep running.',
+    points: [
+      'One set of tabs and panes per Space',
+      'Switch instantly from the title bar or with ⌘E',
+      'Per-Space colour and default working folder',
+    ],
+    image: '/img/feature-spaces.webp',
+    imageLight: '/img/feature-spaces-light.webp',
+    alt: 'Kommando title-bar Spaces switcher listing project workspaces',
   },
   {
     eyebrow: 'Make it yours',
@@ -132,6 +175,19 @@ const SHOWCASES: Array<Showcase> = [
     image: '/img/feature-mcp.webp',
     imageLight: '/img/feature-mcp-light.webp',
     alt: 'Another AI app running commands in Kommando over its MCP server',
+  },
+  {
+    eyebrow: 'Theme Studio',
+    title: 'Design a terminal that looks like yours.',
+    body: 'Dial in the background, foreground, cursor and all 16 ANSI colors with a live preview that exercises every slot. Give a theme separate light and dark palettes and it follows your system automatically.',
+    points: [
+      'Edit 16 ANSI colors plus background, foreground and cursor',
+      'Live preview catches washed-out colors before you commit',
+      'Per-theme light and dark variants that follow the system',
+    ],
+    image: '/img/feature-theme.webp',
+    imageLight: '/img/feature-theme-light.webp',
+    alt: 'Kommando Theme Studio editing the Aurora theme with a live preview',
   },
 ]
 
@@ -214,9 +270,9 @@ function Hero() {
         </h1>
 
         <p className="mt-5 text-balance text-lg text-muted-foreground">
-          <Wordmark withCursor={false} className="font-semibold" /> is a fast,
-          native macOS terminal with a built-in AI assistant, split panes, a
-          JavaScript REPL, and an inline JSON inspector.
+          <Wordmark withCursor={false} className="font-semibold" /> is a native
+          macOS terminal with a built-in AI assistant, split panes & tabs, and a
+          Space for every project.
         </p>
 
         <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row">
@@ -266,7 +322,7 @@ function Features() {
         <SectionHeading
           eyebrow="Features"
           title="Everything you reach for, in one window"
-          subtitle="Kommando keeps the speed of a native terminal and adds the tools you usually juggle across three other apps."
+          subtitle="A genuinely native Mac terminal that folds in the tools you usually juggle across three other apps."
         />
 
         <div className="mt-14 grid gap-px overflow-hidden rounded-2xl border border-border bg-border sm:grid-cols-2 lg:grid-cols-3">
@@ -360,7 +416,7 @@ function Faq() {
       <SectionHeading
         eyebrow="FAQ"
         title="Questions, answered"
-        subtitle="The short version: it’s fast, it’s native, and your keystrokes stay yours."
+        subtitle="The short version: native Mac app, your own API key, and AI that only acts when you let it."
       />
 
       <Accordion type="single" collapsible className="mt-12 w-full">

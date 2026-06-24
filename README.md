@@ -1,7 +1,7 @@
 <div align="center">
   <img src="public/kommando-icon.webp" alt="Kommando" width="120" height="120" />
   <h1>Kommando</h1>
-  <p><strong>A fast, native macOS terminal — split panes, tabs, and an AI sidebar, built in SwiftUI.</strong></p>
+  <p><strong>A native macOS terminal — split panes, tabs, and an AI sidebar, built in SwiftUI.</strong></p>
   <p>
     <a href="https://kommando.app"><strong>🌐 kommando.app</strong></a>
     &nbsp;·&nbsp;
@@ -13,7 +13,7 @@
 
 <div align="center">
   <a href="https://kommando.app">
-    <img src="public/img/screenshot-1.webp" alt="Kommando terminal with the AI assistant explaining a project's file structure" width="860" />
+    <img src="public/img/feature-ai.webp" alt="Kommando terminal with the AI assistant explaining a project's file structure" width="860" />
   </a>
 </div>
 
@@ -33,7 +33,7 @@ This repository contains the source for [**kommando.app**](https://kommando.app)
 - **Native & private** — built in SwiftUI with session restore, theming, and a translucent window.
 
 <div align="center">
-  <img src="public/img/screenshot-3.webp" alt="Kommando showing three terminals tiled into split panes" width="860" />
+  <img src="public/img/feature-panes.webp" alt="Kommando showing four terminals tiled into split panes" width="860" />
 </div>
 
 ## Built with

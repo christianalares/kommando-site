@@ -4,11 +4,11 @@ import appCss from '../styles.css?url'
 
 const SITE_TITLE = 'Kommando — A native macOS terminal with AI built in'
 const SITE_DESCRIPTION =
-  'Kommando is a fast, native macOS terminal with a built-in AI assistant, split panes, a JavaScript REPL, and an inline JSON inspector. Bring your own Anthropic or OpenAI key.'
+  'Kommando is a native macOS terminal with a built-in AI assistant, split panes, per-project Spaces, command blocks, and a built-in MCP server. Bring your own Anthropic or OpenAI key.'
 const SITE_URL = 'https://kommando.app'
 const OG_IMAGE = `${SITE_URL}/og.png`
 const OG_IMAGE_ALT =
-  'Kommando — the terminal that thinks with you. A native macOS terminal with AI assistant, split panes, JavaScript REPL, and a built-in MCP server.'
+  'Kommando — the terminal that thinks with you. A native macOS terminal with an AI assistant, split panes, Spaces, and a built-in MCP server.'
 
 export const Route = createRootRoute({
   head: () => ({
