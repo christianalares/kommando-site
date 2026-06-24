@@ -30,11 +30,12 @@ const KeyCap: React.FC<{ label: string; pressed?: boolean }> = ({
   </div>
 );
 
-/** Floating ⌘K keystroke HUD. `progress` (0–1) drives scale/opacity. */
+/** Floating keystroke HUD (⌘K by default). `progress` (0–1) drives scale/opacity. */
 export const KeystrokeOverlay: React.FC<{
   progress: number;
   pressed?: boolean;
-}> = ({ progress, pressed }) => (
+  keys?: string[];
+}> = ({ progress, pressed, keys = ['⌘', 'K'] }) => (
   <div
     style={{
       position: 'absolute',
@@ -53,8 +54,9 @@ export const KeystrokeOverlay: React.FC<{
         transform: `scale(${0.75 + progress * 0.25})`,
       }}
     >
-      <KeyCap label="⌘" pressed={pressed} />
-      <KeyCap label="K" pressed={pressed} />
+      {keys.map((k, i) => (
+        <KeyCap key={i} label={k} pressed={pressed} />
+      ))}
     </div>
   </div>
 );

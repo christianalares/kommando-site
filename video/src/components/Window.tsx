@@ -56,6 +56,7 @@ export const Tab: React.FC<{ label: string; active?: boolean }> = ({
 export const KommandoWindow: React.FC<{
   width: number;
   height: number;
+  spaceChip?: React.ReactNode;
   tabs?: React.ReactNode;
   toolbar?: React.ReactNode;
   rightWidth?: number;
@@ -66,6 +67,7 @@ export const KommandoWindow: React.FC<{
 }> = ({
   width,
   height,
+  spaceChip,
   tabs,
   toolbar,
   rightWidth = 0,
@@ -115,6 +117,7 @@ export const KommandoWindow: React.FC<{
           }}
         >
           <TrafficLights />
+          {spaceChip}
           <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
             {tabs}
           </div>

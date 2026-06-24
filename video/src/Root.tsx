@@ -6,6 +6,9 @@ import { ShotAi } from './shots/ShotAi';
 import { ShotPanes } from './shots/ShotPanes';
 import { ShotCommands } from './shots/ShotCommands';
 import { ShotMcp } from './shots/ShotMcp';
+import { ShotSpaces } from './shots/ShotSpaces';
+import { ShotCommandBlocks } from './shots/ShotCommandBlocks';
+import { ShotTheme } from './shots/ShotTheme';
 import { FPS } from './theme';
 
 const SHOT_W = 1780;
@@ -53,6 +56,33 @@ export const RemotionRoot: React.FC = () => {
       <Composition
         id="ShotMcp"
         component={ShotMcp}
+        durationInFrames={1}
+        fps={FPS}
+        width={SHOT_W}
+        height={SHOT_H}
+        defaultProps={{ width: SHOT_W, height: SHOT_H }}
+      />
+      <Composition
+        id="ShotSpaces"
+        component={ShotSpaces}
+        durationInFrames={1}
+        fps={FPS}
+        width={SHOT_W}
+        height={SHOT_H}
+        defaultProps={{ width: SHOT_W, height: SHOT_H }}
+      />
+      <Composition
+        id="ShotCommandBlocks"
+        component={ShotCommandBlocks}
+        durationInFrames={1}
+        fps={FPS}
+        width={SHOT_W}
+        height={SHOT_H}
+        defaultProps={{ width: SHOT_W, height: SHOT_H }}
+      />
+      <Composition
+        id="ShotTheme"
+        component={ShotTheme}
         durationInFrames={1}
         fps={FPS}
         width={SHOT_W}
