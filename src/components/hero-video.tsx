@@ -58,12 +58,12 @@ export function HeroVideo({
           ref={videoRef}
           src={activeSrc}
           poster={activePoster}
-          loop
           playsInline
           preload="metadata"
           className="block w-full cursor-pointer"
           onPlay={() => setPlaying(true)}
           onPause={() => setPlaying(false)}
+          onEnded={() => setPlaying(false)}
         />
 
         {!playing ? (
