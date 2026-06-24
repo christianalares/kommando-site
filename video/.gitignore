@@ -3,5 +3,9 @@ dist
 .DS_Store
 .env
 
-# Ignore the output video from Git but not videos you import into src/.
+# Rendered output (regenerate with `npx remotion render`).
 out
+
+# Source audio (soundtracks) is kept locally but not committed — it's large and
+# would bloat the repo. Drop the .mp3s back into public/ to render with sound.
+public/*.mp3
