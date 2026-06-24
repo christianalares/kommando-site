@@ -51,7 +51,7 @@ export function SiteHeader() {
           </Button>
 
           <Button asChild size="sm" className="rounded-full font-medium">
-            <a href={DOWNLOAD_URL}>
+            <a href={DOWNLOAD_URL} data-track="download" data-location="header">
               <AppleLogo className="size-4" />
               Download
             </a>

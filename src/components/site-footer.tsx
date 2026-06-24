@@ -26,12 +26,15 @@ export function SiteFooter() {
         <nav className="flex flex-wrap items-center gap-x-7 gap-y-2">
           {LINKS.map((item) => {
             const isExternal = item.href.startsWith('http')
+            const isDownload = item.href === DOWNLOAD_URL
             return (
               <a
                 key={item.label}
                 href={item.href}
                 target={isExternal ? '_blank' : undefined}
                 rel={isExternal ? 'noreferrer' : undefined}
+                data-track={isDownload ? 'download' : undefined}
+                data-location={isDownload ? 'footer' : undefined}
                 className="text-sm text-muted-foreground transition-colors hover:text-foreground"
               >
                 {item.label}

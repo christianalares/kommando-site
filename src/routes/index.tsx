@@ -281,7 +281,7 @@ function Hero() {
             size="lg"
             className="rounded-full px-7 text-base font-medium"
           >
-            <a href={DOWNLOAD_URL}>
+            <a href={DOWNLOAD_URL} data-track="download" data-location="hero">
               <AppleLogo className="size-5" />
               Download for macOS
             </a>
@@ -454,7 +454,7 @@ function DownloadCta() {
               size="lg"
               className="rounded-full px-8 text-base font-medium"
             >
-              <a href={DOWNLOAD_URL}>
+              <a href={DOWNLOAD_URL} data-track="download" data-location="cta">
                 <AppleLogo className="size-5" />
                 Download for macOS
               </a>
