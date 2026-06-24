@@ -1,5 +1,6 @@
 import { HeadContent, Scripts, createRootRoute } from '@tanstack/react-router'
 
+import '@/lib/op'
 import appCss from '../styles.css?url'
 
 const SITE_TITLE = 'Kommando — A native macOS terminal with AI built in'
