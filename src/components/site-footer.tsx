@@ -1,7 +1,8 @@
+import { DOWNLOAD_URL } from '@/lib/links'
 import { AppIcon, Wordmark } from '@/components/wordmark'
 
 const LINKS = [
-  { label: 'Download', href: '/#download' },
+  { label: 'Download', href: DOWNLOAD_URL },
   { label: 'About', href: '/#about' },
   { label: 'FAQ', href: '/#faq' },
   { label: 'GitHub', href: 'https://github.com/christianalares/kommando' },
