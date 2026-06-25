@@ -23,6 +23,20 @@ This repository contains the source for [**kommando.app**](https://kommando.app)
 **Kommando**. Kommando is an open-source, native macOS terminal — the app itself lives at
 [`christianalares/kommando`](https://github.com/christianalares/kommando).
 
+## Install Kommando
+
+**Homebrew**
+
+```bash
+brew install --cask christianalares/tap/kommando
+```
+
+**Direct download** — grab `Kommando.zip` from [kommando.app](https://kommando.app), unzip it, and drag
+`Kommando.app` to `/Applications`.
+
+Either way you get the same Developer ID-signed, notarized build that keeps itself up to date via Sparkle.
+Requires macOS 26 (Tahoe) on Apple silicon.
+
 ## Features
 
 - **Split panes** — tile terminals horizontally and vertically; new panes inherit the current directory.

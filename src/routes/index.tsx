@@ -15,6 +15,7 @@ import type {LucideIcon} from 'lucide-react';
 import { cn } from '@/lib/utils'
 import { DOWNLOAD_URL } from '@/lib/links'
 import { AppleLogo } from '@/components/apple-logo'
+import { BrewCommand } from '@/components/brew-command'
 import { CommandDrift } from '@/components/command-drift'
 
 import {
@@ -298,6 +299,13 @@ function Hero() {
         <p className="mt-4 font-mono text-xs text-muted-foreground">
           macOS 26+ · Apple silicon · No account required
         </p>
+
+        <div className="mt-7 flex w-full flex-col items-center gap-2.5">
+          <span className="text-xs text-muted-foreground">
+            or install with Homebrew
+          </span>
+          <BrewCommand />
+        </div>
       </div>
 
       <div className="relative mx-auto mt-16 max-w-5xl">
@@ -463,6 +471,13 @@ function DownloadCta() {
           <p className="mt-4 font-mono text-xs text-muted-foreground">
             Free · macOS 26+ · Apple silicon
           </p>
+
+          <div className="mt-8 flex flex-col items-center gap-2.5">
+            <span className="text-xs text-muted-foreground">
+              Prefer the terminal? Install with Homebrew:
+            </span>
+            <BrewCommand className="mx-auto" />
+          </div>
         </div>
       </div>
     </section>
