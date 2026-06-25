@@ -304,7 +304,7 @@ function Hero() {
           <span className="text-xs text-muted-foreground">
             or install with Homebrew
           </span>
-          <BrewCommand />
+          <BrewCommand location="hero" />
         </div>
       </div>
 
@@ -476,7 +476,7 @@ function DownloadCta() {
             <span className="text-xs text-muted-foreground">
               Prefer the terminal? Install with Homebrew:
             </span>
-            <BrewCommand className="mx-auto" />
+            <BrewCommand className="mx-auto" location="cta" />
           </div>
         </div>
       </div>

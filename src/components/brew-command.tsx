@@ -3,18 +3,27 @@ import { Check, Copy } from 'lucide-react'
 
 import { cn } from '@/lib/utils'
 import { BREW_INSTALL_CMD } from '@/lib/links'
+import { op } from '@/lib/op'
 
 /**
  * The Homebrew install one-liner with a copy-to-clipboard button — the second
  * install path alongside the direct download CTA.
  */
-export function BrewCommand({ className }: { className?: string }) {
+export function BrewCommand({
+  className,
+  location,
+}: {
+  className?: string
+  /** Where on the page this copy button lives — sent to analytics. */
+  location?: 'hero' | 'cta'
+}) {
   const [copied, setCopied] = useState(false)
 
   const copy = () => {
     void navigator.clipboard
       .writeText(BREW_INSTALL_CMD)
       .then(() => {
+        op.track('brew_install_copy', { location })
         setCopied(true)
         setTimeout(() => setCopied(false), 1500)
       })
